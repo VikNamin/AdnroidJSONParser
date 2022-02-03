@@ -77,7 +77,7 @@ public class DownloadJsonTask
                 JSONObject valuteObj = valute.getJSONObject((String) valuteNames.get(i));
                 String name = valuteObj.getString("Name");
                 double value = valuteObj.getDouble("Value");
-                names[i] = name + " " + value;
+                names[i] = name + "\n" + value;
             }
             ArrayAdapter<String> adapter = new ArrayAdapter(listView.getContext(),
                     android.R.layout.simple_list_item_1, names);
