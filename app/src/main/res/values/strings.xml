@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TestProject</string>
+    <string name="button_json_text">Загрузить данные</string>
+</resources>
