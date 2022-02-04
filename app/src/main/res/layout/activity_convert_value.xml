@@ -7,6 +7,44 @@
     android:layout_height="match_parent"
     android:baselineAligned="false">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="370dp"
+        android:layout_height="325dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="173dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Рубли в валюту"
+        android:inputType="number"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:onClick="convertValueRubles"
+        android:text="Конвертировать"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="173dp"
@@ -14,7 +52,7 @@
         android:layout_marginStart="4dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Введите число"
+        android:hint="Валюта в рубли"
         android:inputType="number"
         android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/button"
@@ -35,8 +73,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="370dp"
-        android:layout_height="325dp"
+        android:layout_width="372dp"
+        android:layout_height="203dp"
         android:layout_marginTop="16dp"
         android:textColor="#000000"
         android:textSize="20sp"

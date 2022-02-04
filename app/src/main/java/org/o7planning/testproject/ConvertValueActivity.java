@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ConvertValueActivity extends AppCompatActivity {
 
     TextView textView;
     EditText editText;
+    TextView textView2;
+    EditText editText2;
     double valueNum;
     String valueName;
     int valueCount;
@@ -26,11 +26,20 @@ public class ConvertValueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_convert_value);
         textView = (TextView) findViewById(R.id.textView);
         editText = (EditText) findViewById(R.id.editText);
+        textView2 = (TextView) findViewById(R.id.textView2);
+        editText2 = (EditText) findViewById(R.id.editText2);
     }
 
     public void convertValue(View view)
     {
         double settableText = (valueNum/valueCount) * Double.parseDouble(editText.getText().toString());
-        textView.setText(editText.getText().toString() + " " + valueName + "равно " + Double.toString(settableText) + " Рублей");
+        textView.setText(editText.getText().toString() + " " + valueName + "равно " + (settableText) + " Рублей");
+    }
+
+    public void convertValueRubles(View view)
+    {
+        double settableText = (valueCount/valueNum) * Double.parseDouble(editText2.getText().toString());
+        System.out.println(settableText);
+        textView2.setText(editText2.getText().toString() + " Рублей равно " + (settableText) + " " + valueName);
     }
 }
