@@ -48,14 +48,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 Intent intent = new Intent(listView.getContext(), ConvertValueActivity.class);
                 String[] valueText = ((TextView) itemClicked).getText().toString().split(" |\n");
-                System.out.println(valueText[valueText.length-1]);
-                intent.putExtra("value", valueText[valueText.length-1]);
-                intent.putExtra("valueName", valueText[0]);
+                intent.putExtra("valueNum", valueText[valueText.length-1]);
+                intent.putExtra("valueName", stringNameJoin(valueText));
+                intent.putExtra("valueCount", valueText[0]);
                 startActivity(intent);
             }
         });
     }
-
 
     // When user click on the "Download Json".
     public void downloadAndShowJson(View view) {
@@ -66,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Execute task (Pass jsonUrl).
         task.execute(jsonUrl);
+    }
+
+    private String stringNameJoin(String[] str){
+        String tempStr = "";
+        for (int i = 1; i<str.length-1; i++){
+            tempStr+=str[i] + " ";
+        }
+        return tempStr;
     }
 
     class DownloadJsonTask
@@ -129,9 +136,10 @@ public class MainActivity extends AppCompatActivity {
                 names = Arrays.copyOf(names, valuteNames.length());
                 for (int i = 0; i<valuteNames.length(); i++){
                     JSONObject valuteObj = valute.getJSONObject((String) valuteNames.get(i));
+                    int count = valuteObj.getInt("Nominal");
                     String name = valuteObj.getString("Name");
                     double value = valuteObj.getDouble("Value");
-                    names[i] = name + "\n" + value;
+                    names[i] = count + " " + name + "\n" + value;
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter(listView.getContext(),
                         android.R.layout.simple_list_item_1, names);

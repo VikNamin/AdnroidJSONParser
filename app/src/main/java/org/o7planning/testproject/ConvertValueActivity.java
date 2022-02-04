@@ -13,14 +13,16 @@ public class ConvertValueActivity extends AppCompatActivity {
 
     TextView textView;
     EditText editText;
-    double valueString;
+    double valueNum;
     String valueName;
+    int valueCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        valueString = Double.parseDouble(getIntent().getStringExtra("value"));
+        valueNum = Double.parseDouble(getIntent().getStringExtra("valueNum"));
         valueName = getIntent().getStringExtra("valueName");
+        valueCount = Integer.parseInt(getIntent().getStringExtra("valueCount"));
         setContentView(R.layout.activity_convert_value);
         textView = (TextView) findViewById(R.id.textView);
         editText = (EditText) findViewById(R.id.editText);
@@ -28,7 +30,7 @@ public class ConvertValueActivity extends AppCompatActivity {
 
     public void convertValue(View view)
     {
-        double settableText = valueString * Double.parseDouble(editText.getText().toString());
-        textView.setText(editText.getText().toString() + " рублей равно: " + Double.toString(settableText) + " " + valueName);
+        double settableText = (valueNum/valueCount) * Double.parseDouble(editText.getText().toString());
+        textView.setText(editText.getText().toString() + " " + valueName + "равно " + Double.toString(settableText) + " Рублей");
     }
 }
