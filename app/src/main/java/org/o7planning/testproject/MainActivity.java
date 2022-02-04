@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
     private Button buttonJson;
-    public static String names[] = new String[0];
+    public static String[] names = new String[0];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +74,7 @@ public class MainActivity extends AppCompatActivity {
         return tempStr;
     }
 
-    class DownloadJsonTask
-            // AsyncTask<Params, Progress, Result>
-            extends AsyncTask<String, Void, String> {
+    class DownloadJsonTask extends AsyncTask<String, Void, String> {
 
         private ListView listView;
 
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             String textUrl = params[0];
 
             InputStream in = null;
-            BufferedReader br= null;
+            BufferedReader br = null;
             try {
                 URL url = new URL(textUrl);
                 HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -103,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (resCode == HttpURLConnection.HTTP_OK) {
                     in = httpConn.getInputStream();
-                    br= new BufferedReader(new InputStreamReader(in));
+                    br = new BufferedReader(new InputStreamReader(in));
 
                     StringBuilder sb= new StringBuilder();
-                    String s= null;
-                    while((s= br.readLine())!= null) {
+                    String s = null;
+                    while((s = br.readLine())!= null) {
                         sb.append(s);
                         sb.append("\n");
                     }
