@@ -55,14 +55,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // When user click on the "Download Json".
     public void downloadAndShowJson(View view) {
         String jsonUrl = "https://www.cbr-xml-daily.ru/daily_json.js";
-
-        // Create a task to download and display json content.
         DownloadJsonTask task = new DownloadJsonTask(this.listView);
-
-        // Execute task (Pass jsonUrl).
         task.execute(jsonUrl);
     }
 
@@ -121,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
-        // When the task is completed, this method will be called
-        // Download complete. Lets update UI
         @Override
         protected void onPostExecute(String result) {
             try {
